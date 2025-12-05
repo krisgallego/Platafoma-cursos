@@ -1,41 +1,41 @@
-CREATE DATABASE cursos;
+create database cursos;
 USE cursos;
 
 drop database cursos;
--- TABLA CATEGORIA
-CREATE TABLE categoria (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL
+-- tabla categoria
+create table categoria (
+    id int primary key AUTO_INCREMENT,
+    nombre varchar(100) not null
 );
 
 select * from categoria;
 
 drop table cursos;
 
--- TABLA CURSO
-CREATE TABLE curso (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(150) NOT NULL,
-    descripcion VARCHAR(255),
-    categoria_id int NOT NULL,
-    FOREIGN KEY (categoria_id) REFERENCES categoria(id)
+-- tabla curso
+create table curso (
+    id int primary key AUTO_INCREMENT,
+    titulo varchar(150) not null,
+    descripcion varchar(255),
+    categoria_id int not null,
+    foreign key (categoria_id) references categoria(id)
 );
 
 select * from cursos;
--- TABLA ESTUDIANTE
-CREATE TABLE estudiante (
-    id int PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(150) NOT NULL,
-    email VARCHAR(150) NOT NULL 
+-- tabla estudiante
+create table estudiante (
+    id int primary key AUTO_INCREMENT,
+    nombre varchar(150) not null,
+    email varchar(150) not null 
 );
 
--- TABLA INTERMEDIA (N:N)
-CREATE TABLE estudiantes_curso (
+-- tabla intermedia
+create table estudiantes_curso (
     estudiante_id int,
     cursos_id int,
-    PRIMARY KEY (estudiante_id, cursos_id),
-    FOREIGN KEY (estudiante_id) REFERENCES estudiante(id),
-    FOREIGN KEY (cursos_id) REFERENCES cursos(id)
+    primary key (estudiante_id, cursos_id),
+    foreign key (estudiante_id) references estudiante(id),
+    foreign key (cursos_id) references cursos(id)
 );
 
 select * from estudiantes_curso;
